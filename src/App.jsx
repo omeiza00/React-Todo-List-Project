@@ -4,47 +4,79 @@ import ThemeBtn from './components/ThemeBtn'
 import Header from './components/Header'
 import TaskList from './components/TaskList'
 import TaskInput from './components/TaskInput'
+import FilterBar from './components/FilterBar'
 
 function App() {
 
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [filter, setFilter] = useState('all');
+  
 
-  const [tasks, setTasks] = useState([
-    {id: 1, text: "Wash the dishes", completed: false},
-    {id: 2, text: "Take out the trash", completed: true},
-    {id: 3, text: "Do the laundry", completed: false},
-  ])
+  const [tasks, setTasks] = useState(() => {
+    const allTasks = localStorage.getItem('tasks')
+    if (allTasks === null) {
+      return [];
+    }
+    return JSON.parse(allTasks);
+  })
+
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === 'all') {
+      return true;
+    } else if (filter === 'pending') {
+      return task.completed === false
+    } else {
+      return task.completed === true
+    }
+  })
+
+  const tasksLeft = tasks.filter((task) => {
+    return task.completed === false
+  }).length;
 
   function addTask(inputText) {
     const newTask = {id: Date.now(), text: inputText, completed: false}
-
-    setTasks([...tasks, newTask]);
+    const updatedTasks = [...tasks, newTask];
+    setTasks(updatedTasks)
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks))
   }
 
-  function deleteTask(delId) {
-    
+  function deleteTask(id) {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks))
   }
-  
 
-  
   function onToggleComplete(id) {
-    setTasks(
-      tasks.map((task) => {
+    const updatedTasks = tasks.map((task) => {
         if(task.id === id){
           return {...task, completed: !task.completed}
         }
         return task
-      })
-    )
+      });
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+  }
+
+  function editTask(id, newText) {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return{...task, text: newText}
+      }
+      return task
+    })
+    setTasks(updatedTasks)
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks))
   }
 
   return (
-    <div className = {isDarkMode ? "dark-mode" : ""}>
+    <div className = {isDarkMode ? "dark-mode" : "light-mode"}>
       <Header>
         <ThemeBtn onToggle={() => setIsDarkMode(!isDarkMode)} isDarkMode={isDarkMode} />
       </Header>
       <TaskInput onAddTask={addTask}/>
-      <TaskList tasks={tasks} onToggleComplete={onToggleComplete} />
+    <FilterBar onFilterChange={setFilter} activeFilter={filter} tasksLeft={tasksLeft} totTasks={tasks}/>
+      <TaskList tasks={filteredTasks} onToggleComplete={onToggleComplete} deleteTask={deleteTask} editTask={editTask} />
     </div>
   )
 }

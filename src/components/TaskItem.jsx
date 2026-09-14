@@ -1,19 +1,41 @@
 import { TrashSimpleIcon, PencilSimpleIcon } from "@phosphor-icons/react";
+import { useState } from "react";
+import '../styles/TaskItem.css'
 
 
-function TaskItem({task, onToggleComplete}) {
+function TaskItem({task, onToggleComplete, deleteTask, onEditTask}) {
+
+  const [isEditing, setIsEditing] = useState(false)
+  const [editText, setEditText] = useState(task.text)
+
   return (
     <div className="task-container">
     <div className="checkbox-text">
       <input type="checkbox" name="" id="" checked={task.completed} onChange={() => onToggleComplete(task.id)} />
-      <p className="task-text">{task.text}</p>
+      {isEditing ? (
+        <input
+      type="text"
+      value={editText}
+      onChange={(e) => setEditText(e.target.value)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          onEditTask(task.id, editText);
+          setIsEditing(false)
+        }
+    }}
+      name=""
+      id=""
+    />
+      ) : (
+      <p className={task.completed ? "task-text completed" : "task-text"}>{task.text}</p>
+    )}
 
     </div>
     <div className="edit-delete-btns">
-      <button className="edit-delete">
+      <button className="edit-delete" onClick={() => deleteTask(task.id)}>
         <TrashSimpleIcon size={32} weight="fill" />
       </button>
-      <button className="edit-delete">
+      <button className="edit-delete" onClick={() => setIsEditing(true)}>
         <PencilSimpleIcon size={32} weight="fill" />
       </button>
     </div>

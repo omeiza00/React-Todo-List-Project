@@ -1,6 +1,6 @@
 function Header({children}) {
   return (
-    <div>
+    <div className="header-div">
         {children}
     </div>
   )
