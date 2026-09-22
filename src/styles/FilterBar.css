@@ -1,4 +1,28 @@
+.filter-section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-btns{
+  display: flex;
+  gap: 8px;
+}
+
+.filter-btns button{
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 15px;
+  padding: 0;
+  cursor: pointer;
+}
+
 .filter-btn.active {
   font-weight: bold;
   color: #2563EB;
+}
+
+.taskleft-text{
+  color: black;
 }

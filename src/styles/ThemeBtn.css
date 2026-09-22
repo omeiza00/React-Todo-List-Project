@@ -1,0 +1,9 @@
+.theme-btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.theme-btn:active{
+    color: darkslateblue;
+}

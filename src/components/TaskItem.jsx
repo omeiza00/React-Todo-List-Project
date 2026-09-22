@@ -11,7 +11,7 @@ function TaskItem({task, onToggleComplete, deleteTask, onEditTask}) {
   return (
     <div className="task-container">
     <div className="checkbox-text">
-      <input type="checkbox" name="" id="" checked={task.completed} onChange={() => onToggleComplete(task.id)} />
+      <input className="tickBox" type="checkbox" name="" id="" checked={task.completed} onChange={() => onToggleComplete(task.id)} />
       {isEditing ? (
         <input
       type="text"
@@ -33,10 +33,10 @@ function TaskItem({task, onToggleComplete, deleteTask, onEditTask}) {
     </div>
     <div className="edit-delete-btns">
       <button className="edit-delete" onClick={() => deleteTask(task.id)}>
-        <TrashSimpleIcon size={32} weight="fill" />
+        <TrashSimpleIcon size={19} weight="fill" />
       </button>
       <button className="edit-delete" onClick={() => setIsEditing(true)}>
-        <PencilSimpleIcon size={32} weight="fill" />
+        <PencilSimpleIcon size={19} weight="fill" />
       </button>
     </div>
   </div>

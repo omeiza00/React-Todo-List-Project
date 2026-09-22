@@ -1,4 +1,49 @@
+.task-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+    border-bottom: 1px solid black;
+}
+
+.checkbox-text{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tickBox{
+    width: 26px;
+    height: 26px;
+}
+
+.task-text{
+    color: black;
+    font-size: 20px;
+}
+
 .task-text.completed{
     text-decoration: line-through;
     color: #A9A9A9;
 }
+
+.edit-delete-btns{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edit-delete{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: black;
+}
+
+
+
+
+
+
+

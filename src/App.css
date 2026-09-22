@@ -182,3 +182,26 @@
     border-right-color: var(--border);
   }
 } */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.body.dark-mode{
+  background-color: black;
+  color: white;
+}
+
+.body.light-mode{
+  background-color: white;
+  color: black;
+}
+
+.main-task-div{
+  background-color: bisque;
+}

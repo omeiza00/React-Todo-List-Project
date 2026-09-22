@@ -1,0 +1,6 @@
+.header-div{
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}

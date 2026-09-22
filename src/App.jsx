@@ -70,13 +70,16 @@ function App() {
   }
 
   return (
-    <div className = {isDarkMode ? "dark-mode" : "light-mode"}>
+    <div className = {isDarkMode ? "body dark-mode" : "body light-mode"}>
       <Header>
         <ThemeBtn onToggle={() => setIsDarkMode(!isDarkMode)} isDarkMode={isDarkMode} />
       </Header>
+      <h2 className='heading'>MY TASKS</h2>
+      <div className='main-task-div'>
       <TaskInput onAddTask={addTask}/>
     <FilterBar onFilterChange={setFilter} activeFilter={filter} tasksLeft={tasksLeft} totTasks={tasks}/>
       <TaskList tasks={filteredTasks} onToggleComplete={onToggleComplete} deleteTask={deleteTask} editTask={editTask} />
+      </div>
     </div>
   )
 }

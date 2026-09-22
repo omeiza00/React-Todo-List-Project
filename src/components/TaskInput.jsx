@@ -13,7 +13,7 @@ function TaskInput({ onAddTask }) {
         setInputValue('');
     }
   return (      
-    <div>
+    <div className="input-container">
     <input
       type="text"
       value={inputValue}
@@ -25,9 +25,10 @@ function TaskInput({ onAddTask }) {
           handleAddClick();
         }
     }}
+    placeholder="Add task here..."
     />
 
-    <button onClick={handleAddClick} className="add-btn" disabled={inputValue.trim() === ''}><PlusIcon size={32}/> Add</button>
+    <button onClick={handleAddClick} className="add-btn" disabled={inputValue.trim() === ''}><PlusIcon size={20}/> Add</button>
     </div>
   );
 }

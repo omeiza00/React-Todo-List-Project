@@ -1,3 +1,31 @@
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 0px 0px 20px 0px;
+}
+
+.input-container input {
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  font-size: 20px;
+}
+
+.input-container input:focus {
+  outline: none;
+  border: none;
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  font-size: 20px;
+}
+
 .add-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
