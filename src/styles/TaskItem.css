@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 0px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #6C63FF;
 }
 
 .checkbox-text{
@@ -16,6 +16,7 @@
     width: 26px;
     height: 26px;
 }
+
 
 .task-text{
     color: black;
@@ -39,6 +40,18 @@
     outline: none;
     cursor: pointer;
     color: black;
+}
+
+.edit-input{
+    border: 1px solid #6C63FF;
+  padding: 5px 8px;
+  font-size: 20px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.edit-input:focus{
+    outline: none;
 }
 
 

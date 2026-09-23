@@ -14,6 +14,7 @@ function TaskItem({task, onToggleComplete, deleteTask, onEditTask}) {
       <input className="tickBox" type="checkbox" name="" id="" checked={task.completed} onChange={() => onToggleComplete(task.id)} />
       {isEditing ? (
         <input
+        className="edit-input"
       type="text"
       value={editText}
       onChange={(e) => setEditText(e.target.value)}
